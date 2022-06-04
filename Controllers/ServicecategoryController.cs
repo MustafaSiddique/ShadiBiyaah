@@ -42,8 +42,7 @@ namespace FypDb.Controllers
             return servicecategory;
         }
 
-        // PUT: api/Servicecategory/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // PUT: api/Servicecategory/5 By iD modify
         [HttpPut("{id}")]
         public async Task<IActionResult> PutServicecategory(int id, Servicecategory servicecategory)
         {
