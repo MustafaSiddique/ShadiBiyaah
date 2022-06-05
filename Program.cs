@@ -14,6 +14,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FypDb.Models.FypDBContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("dbconn")));
 
+var serviceProvider = builder.Services.BuildServiceProvider();
+try
+{
+    var dbContext = serviceProvider.GetRequiredService<FypDb.Models.FypDBContext>();
+    dbContext.Database.Migrate();
+}
+catch
+{
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
